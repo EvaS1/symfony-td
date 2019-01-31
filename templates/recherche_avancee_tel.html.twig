@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>TéléphonesQb</h1>
+
+<ul>
+	{% for tel in advanced_search_tel %}
+		<li>{{tel.id}} {{tel.marque}} {{tel.type}} {{tel.taille}}</li>
+	{%endfor%}
+</ul>   
+
+{% endblock %}

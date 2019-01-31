@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>Téléphones</h1>
+<ul>
+	{% for tel in tableau_tel %}
+		<li>{{tel.id}} {{tel.marque}} {{tel.type}} {{tel.taille}}</li>
+	{%endfor%}
+ </ul>   
+{% endblock %}

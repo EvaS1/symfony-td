@@ -1,0 +1,51 @@
+# /!\ il faut mettre 4 espaces et pas une tabulation !
+
+telephone_advanced_search_index: #id de la route
+    path: /telephone/advanced_search/{searchMarque}/{searchType}
+    controller: App\Controller\TelephoneController::index_advanced_search_tel
+
+telephone_search_index:
+    path: /telephone/search/{search}
+    controller: App\Controller\TelephoneController::index_search_tel
+
+telephone_grands_index:
+    path: /telephone/grands/
+    controller: App\Controller\TelephoneController::index_grands_tel
+
+telephone_recupere_index:
+    path: /telephone/
+    controller: App\Controller\TelephoneController::index
+
+telephone_delete_index:
+    path: /telephone/delete/{id}
+    controller: App\Controller\TelephoneController::index_delete_tel
+
+telephone_modify_index:
+    path: /telephone/modify/{id}/{marque}/{type}/{taille}
+    controller: App\Controller\TelephoneController::index_modify_tel
+
+telephone_new_index:
+    path: /telephone/new/{marque}/{type}/{taille}
+    controller: App\Controller\TelephoneController::index_new_tel
+
+# telephone_index:
+#     path: /telephone/add
+#     controller: App\Controller\TelephoneController::index_tel
+
+hello_erreur_index:
+    path: /hello/{prenom}/
+    controller: App\Controller\HelloController::index_erreur
+    requirements:
+        prenom: '[A-Za-z]+'
+
+hello_perso_index:
+    path: /hello/{prenom}/{age}
+    controller: App\Controller\HelloController::index_perso
+    requirements:
+        prenom: '[A-Za-z]+'
+        age: '[0-9]+'
+
+hello_index:
+    path: /hello/
+    controller: App\Controller\HelloController::index
+
