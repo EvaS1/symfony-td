@@ -62,7 +62,7 @@ class TelephoneRepository extends ServiceEntityRepository
         // doit renvoyer un tableau d'entités correspondant à la contrainte
         // comme la fonction findBy par exemple
 
-        $em = $this->getEntityManager();
+        $em = $this->getEntityManager(); 
 
         // création de la requête
         $query = $em->createQuery(
@@ -90,26 +90,37 @@ class TelephoneRepository extends ServiceEntityRepository
         return $query->execute();
     }
 
+
     /*Recherche par marque QueryBuilder*/
     public function findBrandQb($value, $valueType) {
+
+        //on travaille sur l'entité Telephone (le repo est associé à l'entité Telephone), alias 't'
         $qb = $this->createQueryBuilder('t');
 
-        if($value == "0") {
-            $qb->where('t.type LIKE :searchType');
-            $qb->setParameter('searchType', '%'.$valueType.'%');
-        } else if ($valueType == "0") {
-            $qb->where('t.marque LIKE :searchMarque');
-            $qb->setParameter('searchMarque', '%'.$value.'%');
-        } else {
+        if ($value !== "0" && $valueType !== "0") { /*si la marque ET le type sont donnés, on recherche avec les 2 critères*/
             $qb->where('t.marque LIKE :searchMarque')
                 ->andWhere('t.type LIKE :searchType')
                 ->setParameters(array('searchMarque' => '%'.$value.'%', 'searchType' => '%'.$valueType.'%'));
+        
+
+        } else if($value !== "0") { /*si la marque est donnée*/
+            $qb->where('t.marque LIKE :searchMarque');
+            $qb->setParameter('searchMarque', '%'.$value.'%');
+
+
+        } else if ($valueType !== "0") { /*si le type est donné*/
+            $qb->where('t.type LIKE :searchType');
+            $qb->setParameter('searchType', '%'.$valueType.'%');
+        
         }
+       
 
 
+        /*affichage par ordre alphabétique de la marque*/
         $qb->orderBy('t.marque', 'ASC');
 
         
+        /*exécution et renvoi du résultat*/
         $query = $qb->getQuery();
 
         return $query->execute();

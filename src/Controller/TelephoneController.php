@@ -32,7 +32,7 @@ class TelephoneController extends Controller
 		$tel->setTaille($taille);
 		$em = $this->getDoctrine()->getManager();
 		$em->persist($tel);
-		$em->flush();
+		$em->flush(); 
     }
 
     /*Modification téléphone depuis url*/
@@ -93,6 +93,8 @@ class TelephoneController extends Controller
             "advanced_search_tel" => $advanced_search_tel
         ));
     }
+
+
         
 }
 

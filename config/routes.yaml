@@ -1,7 +1,7 @@
 # /!\ il faut mettre 4 espaces et pas une tabulation !
 
 telephone_advanced_search_index: #id de la route
-    path: /telephone/advanced_search/{searchMarque}/{searchType}
+    path: /telephone/advancedsearch/{searchMarque}/{searchType}
     controller: App\Controller\TelephoneController::index_advanced_search_tel
 
 telephone_search_index:
