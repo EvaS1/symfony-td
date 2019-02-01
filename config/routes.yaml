@@ -1,8 +1,11 @@
 # /!\ il faut mettre 4 espaces et pas une tabulation !
-
 telephone_advanced_search_index: #id de la route
     path: /telephone/advancedsearch/{searchMarque}/{searchType}
     controller: App\Controller\TelephoneController::index_advanced_search_tel
+
+telephone_new_tel:
+    path: /telephone/new
+    controller: App\Controller\TelephoneController::new
 
 telephone_search_index:
     path: /telephone/search/{search}
@@ -28,9 +31,9 @@ telephone_new_index:
     path: /telephone/new/{marque}/{type}/{taille}
     controller: App\Controller\TelephoneController::index_new_tel
 
-# telephone_index:
-#     path: /telephone/add
-#     controller: App\Controller\TelephoneController::index_tel
+telephone_index:
+    path: /telephone/add
+    controller: App\Controller\TelephoneController::index_tel
 
 hello_erreur_index:
     path: /hello/{prenom}/

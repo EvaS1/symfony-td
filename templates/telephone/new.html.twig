@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>Formulaire création téléphone</h1>
+
+{{ form_start(form) }}    {# Ouvre la balise form #}
+
+{{ form_widget(form) }}   {# Génère le contenu du formulaire #}
+
+{{ form_end(form) }}   {# Ferme la balise form #}
+  
+{% endblock %}
