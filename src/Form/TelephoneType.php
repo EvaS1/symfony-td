@@ -18,11 +18,14 @@ class TelephoneType extends AbstractType {
 	//Le troisième argument est facultatif
 	//Selon ces options, on peut créer un formulaire avec un label différent, un champ en plus ou en moins...
 	public function buildForm(FormBuilderInterface $builder, array $options) {
+
+		$test = $options['action_name'];
+
 		$builder
 		->add('marque') //Symfony retrouve le type à partir de l'entité)
 		->add('type')
 		->add('taille')
-		->add('save', SubmitType::class, array('label' => 'Création'))
+		->add('save', SubmitType::class, array('label' => $test))
 		;
 	}
 
@@ -33,6 +36,7 @@ class TelephoneType extends AbstractType {
 		//Nous spécifions ici que le paramètre que nous utilisons dans la fonction createForm du contrôleur doit être une entité Téléphone, cela permet à Symfony de pouvoir retrouver le type des champs du formulaire
 		$resolver->setDefaults([
 			'data_class' => Telephone::class,
+			'action_name' => 'new',
 		]);
 
 	}

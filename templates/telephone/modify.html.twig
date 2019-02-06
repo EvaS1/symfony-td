@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<ul>
+	{% for tel in teledit %}
+		<li>{{tel.id}} {{tel.marque}} {{tel.type}} {{tel.taille}}</li>
+	{%endfor%}
+</ul>
+
+<h1>Formulaire modification téléphone</h1>
+
+{{ form_start(form) }}    {# Ouvre la balise form #}
+
+{{ form_widget(form) }}   {# Génère le contenu du formulaire #}
+
+{{ form_end(form) }}   {# Ferme la balise form #}
+  
+{% endblock %}

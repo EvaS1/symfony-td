@@ -123,7 +123,7 @@ class TelephoneController extends Controller
         ->getForm();*/
         
         // => Grâce à TelephoneType.php, on remplace les lignes précédentes par celle-ci :
-        $form = $this->createForm(TelephoneType::class, $tel);
+        $form = $this->createForm(TelephoneType::class, $tel, ['action_name' => 'new']);
 
 
         //Nous récupérons ici les informations du formulaire validé, c-à-d l'équivalent du $_POST, grâce à l'objet $request. Il représente les infos sur la requête HTTP reçue.
@@ -150,9 +150,35 @@ class TelephoneController extends Controller
 
 
     /*Formulaire de modification de téléphone*/
-    public function modify($id) {
+    public function modify($id, Request $request) {
+
+        $repo = $this->getDoctrine()->getRepository(Telephone::class);
+        
+        $teledit = $repo->find($id);
+
+
+        $form = $this->createForm(TelephoneType::class, $teledit, 
+        ['action_name' => 'modify']);
+
+        $form->handleRequest($request); 
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($teledit);
+            $em->flush();
+
+        }
+        
+        //On envoie vers Twig
+        return $this->render('telephone/modify.html.twig', array(
+            'form' => $form->createView(),
+            'teledit' => $teledit
+        ));
 
     }
+
+
+    
 
 
         
