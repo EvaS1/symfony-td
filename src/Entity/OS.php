@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\OSRepository")
@@ -18,16 +19,19 @@ class OS
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $nom;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private $surnom;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\GreaterThan(2005)
      */
     private $annee;
 

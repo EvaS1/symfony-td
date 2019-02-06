@@ -7,6 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TelephoneRepository")
  */
+
+use Symfony\Component\Validator\Constraints as Assert;
+
 class Telephone
 {
     /**
@@ -17,18 +20,27 @@ class Telephone
     private $id;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $marque;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $type;
 
     /**
      * @ORM\Column(type="decimal", precision=4, scale=2)
+     * @Assert\Range(
+     *      min = 3,
+     *      max = 7,
+     *      minMessage = "La taille doit être supérieure à {{ limit }} pouces.",
+     *      maxMessage = "La taille ne doit pas dépasser {{ limit }} pouces."
+     * )
      */
+     
     private $taille;
 
     public function getId(): ?int
