@@ -39,20 +39,23 @@ telephone_new_index:
 #     path: /telephone/add
 #     controller: App\Controller\TelephoneController::index_tel
 
-hello_erreur_index:
-    path: /hello/{prenom}/
-    controller: App\Controller\HelloController::index_erreur
-    requirements:
-        prenom: '[A-Za-z]+'
+# hello_erreur_index:
+#     path: /hello/{prenom}/
+#     controller: App\Controller\HelloController::index_erreur
+#     requirements:
+#         prenom: '[A-Za-z]+'
 
-hello_perso_index:
-    path: /hello/{prenom}/{age}
-    controller: App\Controller\HelloController::index_perso
-    requirements:
-        prenom: '[A-Za-z]+'
-        age: '[0-9]+'
+# hello_perso_index:
+#     path: /hello/{prenom}/{age}
+#     controller: App\Controller\HelloController::index_perso
+#     requirements:
+#         prenom: '[A-Za-z]+'
+#         age: '[0-9]+'
 
 hello_index:
     path: /hello/
     controller: App\Controller\HelloController::index
 
+#hello_index:
+#    path: /email/{name}
+#    controller: App\Controller\HelloController::index

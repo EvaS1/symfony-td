@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    Hello {{ prenom }}, tu as {{ age }} ans !
-    
-    {# <ul> c
+    {# Hello {{ prenom }}, tu as {{ age }} ans !#}
+     <ul>
     {% for prenom in tableau_prenoms %}
         <li>{{ prenom }}</li>
     {% endfor %}
-</ul> #}
+	</ul> 
+	
+		{{ message }}
+
 {% endblock %}
 
 
