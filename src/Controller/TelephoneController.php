@@ -83,7 +83,7 @@ class TelephoneController extends Controller
         $repo = $this->getDoctrine()->getRepository(Telephone::class);
         $search_tel = $repo->findBrand($search);
 
-        return $this->render('marque_tel.html.twig', array(
+        return $this->render('recherche_tel.html.twig', array(
             "search_tel" => $search_tel
         ));
     }
@@ -91,10 +91,10 @@ class TelephoneController extends Controller
     /*Recherche par marque QueryBuilder*/
     public function index_advanced_search_tel($searchMarque, $searchType) {
         $repo = $this->getDoctrine()->getRepository(Telephone::class);
-        $advanced_search_tel = $repo->findBrandQb($searchMarque, $searchType);
+        $search_tel = $repo->findBrandQb($searchMarque, $searchType);
 
-        return $this->render('recherche_avancee_tel.html.twig', array(
-            "advanced_search_tel" => $advanced_search_tel
+        return $this->render('recherche_tel.html.twig', array(
+            "search_tel" => $search_tel
         ));
     }
 

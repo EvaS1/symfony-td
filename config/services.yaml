@@ -36,4 +36,4 @@ services:
 
     App\Service\TabDisplayer:
         arguments:
-            $format: "list"
+            $format: "paragraph"

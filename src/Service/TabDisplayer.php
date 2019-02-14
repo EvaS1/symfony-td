@@ -12,22 +12,24 @@ class TabDisplayer {
 
 
 	public function getPrintedTab($tableau) {
-		
+
 
 		if($this->format == "list") {
-			foreach ($tableau as $valeur) {
-				$tab ='<ul>
-				<li>'.$valeur.'</li>
-				</ul>';
-				return $tab;				
+			$tab = '<ul>';
+			foreach ($tableau as $cle=>$valeur) {
+				$tab .='<li>'.$valeur.'</li>';				
 			}
+			$tab .='</ul>';
 
 		} else if ($this->format == "paragraph") {
-			foreach ($tableau as $valeur) {
-				$tab = '<p>'.$valeur.' '.'</p>';
-				return $tab;
+			$tab='<p>';
+			foreach ($tableau as $cle=>$valeur) {
+				$tab .= $valeur.' ';			
 			}
+			$tab .='</p>';
 		}
+
+		return $tab;
 		
 	}
 
