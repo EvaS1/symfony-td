@@ -8,12 +8,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Psr\Log\LoggerInterface;
 use App\Service\SweatMessageGenerator;
+use App\Service\TabDisplayer;
 
 // notre controller doit forcément hériter de la classe Controller ("use" ci-dessus)
 // Le nom de la classe doit être exactement le même que celui du fichier
 class HelloController extends Controller
 {
-    public function index(LoggerInterface $logger, SweatMessageGenerator $message)
+    public function index(LoggerInterface $logger, SweatMessageGenerator $message, TabDisplayer $tabDisp)
     {
         // on renvoie ici un texte simple. Une instance de Response doit toujours être renvoyée.
 	    $prenom = "Sylvain";
@@ -23,13 +24,20 @@ class HelloController extends Controller
 
 	    $logger->info("Mon joli log");
 
-	    $message->getSweatMessage();
 
 		$tableau_prenoms = array("Sylvain", "Emma", "Eva");
+
+		$tableau = [
+			'id' => '1',
+			'prenom' => 'Eva',
+			'nom' => 'Saintier',
+		];
 
 		return $this->render('hello.html.twig', array(
 		 	"tableau_prenoms" => $tableau_prenoms,
 		 	"message" => $message->getSweatMessage(),
+		 	"tabDisp" => $tabDisp->getPrintedTab($tableau)
+
 		));
 
 
@@ -84,8 +92,6 @@ class HelloController extends Controller
 
 	}
 */
-
-	
 
 }
 

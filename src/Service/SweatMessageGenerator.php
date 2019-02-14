@@ -3,6 +3,14 @@
 namespace App\Service;
 
 class SweatMessageGenerator {
+	
+	private $idMessage;
+
+	public function __construct($idMessage) {
+		$this->idMessage = $idMessage;
+	}
+
+
 	public function getSweatMessage() {
 		$messages = [
 			'Merci à toi !',
@@ -11,10 +19,18 @@ class SweatMessageGenerator {
 			'Tu es tellement formidable !',
 		];
 
-		$index = array_rand($messages);
+		if($this->idMessage != "") {
+			$index = $this->idMessage;
+		} else {
+			$index = array_rand($messages);
+		}
+		
+		
 
 		return $messages[$index];
 	}
+
+
 }
 
 
