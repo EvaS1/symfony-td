@@ -31,7 +31,6 @@ services:
     # please note that last definitions always *replace* previous ones
     App\Service\SweatMessageGenerator:
         arguments:
-            $idMessage: 1
 
 
     App\Service\TabDisplayer:
