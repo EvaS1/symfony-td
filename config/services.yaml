@@ -35,4 +35,5 @@ services:
 
     App\Service\TabDisplayer:
         arguments:
-            $format: "paragraph"
+            $format: "list"
+        tags: ['twig.extension']

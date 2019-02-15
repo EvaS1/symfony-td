@@ -2,7 +2,10 @@
 
 namespace App\Service;
 
-class TabDisplayer {
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
+
+class TabDisplayer extends AbstractExtension {
 	
 	private $format;
 
@@ -10,6 +13,12 @@ class TabDisplayer {
 		$this->format = $format;
 	}
 
+
+	public function getFunctions() {
+		return [
+			new TwigFunction('tabDisp',[$this, 'getPrintedTab']),
+		];
+	}
 
 	public function getPrintedTab($tableau) {
 
