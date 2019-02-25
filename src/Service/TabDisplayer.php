@@ -16,7 +16,7 @@ class TabDisplayer extends AbstractExtension {
 
 	public function getFunctions() {
 		return [
-			new TwigFunction('tabDisp',[$this, 'getPrintedTab']),
+			new TwigFunction('tabDisp',[$this, 'getPrintedTab'], ['is_safe' => ['html']]),
 		];
 	}
 
@@ -36,6 +36,14 @@ class TabDisplayer extends AbstractExtension {
 				$tab .= $valeur.' ';			
 			}
 			$tab .='</p>';
+		
+		} else  if ($this->format == "tab") {
+			$tab = '<table><tr>';
+			foreach ($tableau as $cle=>$valeur) {
+				$tab.='<th>'.$cle.'</th>';
+				$tab.='<td>'.$valeur.'</td></tr>';
+			}
+            $tab.='</table>';
 		}
 
 		return $tab;

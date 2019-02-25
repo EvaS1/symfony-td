@@ -36,7 +36,8 @@ class HelloController extends Controller
 		return $this->render('hello.html.twig', array(
 		 	"tableau_prenoms" => $tableau_prenoms,
 		 	"message" => $message->getSweatMessage(),
-		 	"tabDisp" => $tabDisp->getPrintedTab($tableau)
+		 	/*"tabDisp" => $tabDisp->getPrintedTab($)*/
+		 	"tableau" => $tableau,
 
 		));
 
